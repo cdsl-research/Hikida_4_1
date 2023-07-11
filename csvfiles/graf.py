@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 # tit = "Pod cpu usage"いらない
 xlab = "time(s)"
 ylab = "CPU usage(%)"
-pic = "/home/hikida/promethe/csvfiles/0509a.png"
-csv = "/home/hikida/promethe/csvfiles/cpu_req0509a.csv"
+pic = "/home/hikida/promethe/csvfiles/0711_CPU_300_3.png"
+csv = "/home/hikida/promethe/csvfiles/cpu_req0711_300_3.csv"
 
 # CSVファイルからデータを読み込み
 data = pd.read_csv(csv)
@@ -29,17 +29,17 @@ for y in y_cols:
 
 # グラフにタイトルやラベルを設定
 # plt.title(tit)
-plt.xlabel(xlab, fontsize=14)
-plt.ylabel(ylab, fontsize=14)
-plt.legend(fontsize=11, ncol=4, bbox_to_anchor=(0.5, 1.15), loc = 9, frameon=False)
+plt.xlabel(xlab, fontsize=20)
+plt.ylabel(ylab, fontsize=20)
+plt.legend(fontsize=16, ncol=4, bbox_to_anchor=(0.48, 1.15), loc = 9, frameon=False)
 plt.grid(axis = "y")
-plt.tick_params(labelsize=13)
+plt.tick_params(labelsize=20)                                                           # 値の文字フォント
 
-plt.xlim(0, (len(data)-1) * d)
+plt.xlim(1, (len(data)-1) * d)                                                          # xを1からにすることで原点0を１つにする
 plt.ylim(0)
 # グラフを表示
 fig = plt.gcf()
-# fig.set_size_inches(6, 6)
+fig.set_size_inches(8.7, 6)                                                             # 黄金比
 
 # グラフを保存
 plt.savefig(pic)

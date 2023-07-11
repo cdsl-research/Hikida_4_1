@@ -29,6 +29,7 @@ def main():
         memory_limit = float(pro.get_metric_range_data(metric_name=memory_limit_query)[0].get('values')[-1][1])
         memory_limit_list.append(memory_limit)
 
+
     header = ['Time'] + svc_list
     cpu_data = [header]
     memory_data = [header]
@@ -41,8 +42,8 @@ def main():
         time.sleep(5)
 
     path = "/home/hikida/promethe/csvfiles/"
-    csv.generate_csv(cpu_data, path, "cpu_req0509a.csv")
-    csv.generate_csv(memory_data, path, "memory_req0509a.csv")
+    csv.generate_csv(cpu_data, path, "cpu_req0711_300_3.csv")
+    csv.generate_csv(memory_data, path, "memory_req0711_300_3.csv")
 
 if __name__ == "__main__":
     main()

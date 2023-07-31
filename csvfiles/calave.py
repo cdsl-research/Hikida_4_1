@@ -14,7 +14,7 @@ def calculate_column_means(csv_file_path):
 
 if __name__ == "__main__":
     # CSVファイルのパス
-    csv_file_path = "/home/hikida/promethe/csvfiles/cpu_req0711_300_1.csv"
+    csv_file_path = "/home/hikida/promethe/csvfiles/memory_req0711_300_2.csv"
 
     # 平均値を計算
     column_means = calculate_column_means(csv_file_path)

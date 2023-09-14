@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 # 名前
 # tit = "Pod cpu usage"いらない
 xlab = "time(s)"
-ylab = "memory usage(%)"
-pic = "/home/hikida/promethe/csvfiles/0720_MEM_300_2.png"
-csv = "/home/hikida/promethe/csvfiles/memory_req0711_300_2.csv"
+ylab = "usage"
+pic = "/home/hikida/promethe/csvfiles/0914_read_300.png"
+csv = "/home/hikida/promethe/csvfiles/read_0914_300.csv"
 
 # CSVファイルからデータを読み込み
 data = pd.read_csv(csv)
@@ -36,7 +36,7 @@ plt.grid(axis = "y")
 plt.tick_params(labelsize=20)                                                           # 値の文字フォント
 
 plt.xlim(1, (len(data)-1) * d)                                                          # xを1からにすることで原点0を１つにする
-plt.ylim(0, 100)
+plt.ylim(0, 160000000)
 # グラフを表示
 fig = plt.gcf()
 fig.set_size_inches(8.7, 6)                                                             # 黄金比

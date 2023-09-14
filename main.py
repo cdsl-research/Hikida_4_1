@@ -16,7 +16,7 @@ def main():
         if ('db' not in svc_name) and ('rabbit' not in svc_name):
             svc_list.append(svc_name)
 
-
+    """
     cpu_limit_list = []
     memory_limit_list = []
     for svc in svc_list:
@@ -28,22 +28,29 @@ def main():
 
         memory_limit = float(pro.get_metric_range_data(metric_name=memory_limit_query)[0].get('values')[-1][1])
         memory_limit_list.append(memory_limit)
+    """
 
 
     header = ['Time'] + svc_list
-    cpu_data = [header]
-    memory_data = [header]
+    #cpu_data = [header]
+    #memory_data = [header]
+    read_data = [header]
+    write_data = [header]
 
     Time = 0
     while Time <= 300:
-        cpu_data += [[Time] + metrics.get_cpu(svc_list, cpu_limit_list)]
-        memory_data += [[Time] + metrics.get_memory(svc_list, memory_limit_list)]
+        #cpu_data += [[Time] + metrics.get_cpu(svc_list, cpu_limit_list)]
+        #memory_data += [[Time] + metrics.get_memory(svc_list, memory_limit_list)]
+        read_data += [[Time] + metrics.get_read(svc_list)]
+        #write_data += [[Time] + metrics.get_write(svc_list)]
         Time += 5
         time.sleep(5)
 
     path = "/home/hikida/promethe/csvfiles/"
-    csv.generate_csv(cpu_data, path, "cpu_req0711_300_3.csv")
-    csv.generate_csv(memory_data, path, "memory_req0711_300_3.csv")
+    #csv.generate_csv(cpu_data, path, "cpu_req0711_300_3.csv")
+    #csv.generate_csv(memory_data, path, "memory_req0711_300_3.csv")
+    csv.generate_csv(read_data, path, "read_0914_300.csv")
+    #csv.generate_csv(write_data, path, "write_0914_100.csv")
 
 if __name__ == "__main__":
     main()

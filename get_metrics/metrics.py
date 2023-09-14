@@ -32,3 +32,34 @@ def get_memory(svcs, memory_limits):
         
     
     return data
+
+## fs readを取得
+def get_read(svcs):
+    pro = PrometheusConnect(url = "http://hikida-m:9090")
+    data = []
+    for i in range (len(svcs)):
+    
+        fs_read_query = "container_fs_reads_bytes_total {service=\"kubelet\", container=\"" + svcs[i] + "\"}"
+
+        fs_read = pro.custom_query(query=fs_read_query)[0].get('value')[1]
+
+        data.append(fs_read)
+        
+    
+    return data
+
+
+## fs writeを取得
+def get_write(svcs):
+    pro = PrometheusConnect(url = "http://hikida-m:9090")
+    data = []
+    for i in range (len(svcs)):
+    
+        fs_write_query = "container_fs_writes_bytes_total {service=\"kubelet\", container=\"" + svcs[i] + "\"}"
+
+        fs_write = pro.custom_query(query=fs_write_query)[0].get('value')[1]
+
+        data.append(fs_write)
+        
+    
+    return data
